@@ -60,6 +60,10 @@ div.header > div.ranking {
   padding: 8px;
 }
 
+div.header > div.ranking > button {
+  cursor: pointer;
+}
+
 div.board {
   padding: 3em;
   max-width: 940px;
@@ -67,10 +71,10 @@ div.board {
 }
 
 div.card {
-  height: 220px;
-  line-height: 220px;
+  height: 200px;
+  line-height: 200px;
   display: inline-block;
-  width: 140px;
+  width: 130px;
   margin: 15px;
   border: 7px solid #b0c4e8;
   border-radius: 10px;
@@ -84,3 +88,16 @@ div.card {
 div.card > span.card-unknown {
   color: #b0c4e8;
 }
+
+table.ranking-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: none;
+  margin-bottom: 1em;
+}
+
+table.ranking-table td, table.ranking-table th {
+  padding: 5px;
+  border: 1px solid lightgray;
+}
+

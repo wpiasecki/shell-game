@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.board', ['ngRoute'])
+angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/board', {
@@ -9,7 +9,7 @@ angular.module('myApp.board', ['ngRoute'])
   });
 }])
 
-.controller('BoardCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+.controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', function($scope, $timeout, rankingService) {
   console.log('boardCtrl', this);
   
   const shapes = {
@@ -32,6 +32,9 @@ angular.module('myApp.board', ['ngRoute'])
   $scope.oneCardFlipped = false;
   $scope.cardFlipped;
   $scope.blockFlipping = false;
+  
+  $scope.setSize = '5';
+  $scope.playerName = 'echo';
   $scope.turns = 0;
   
   $scope.cards = randomize(duplicate(set)).map(symbol => (
@@ -39,18 +42,14 @@ angular.module('myApp.board', ['ngRoute'])
   ));
   
   $scope.flip = card => {
-    console.log('card', card);
     if ($scope.blockFlipping || (card == $scope.cardFlipped) || card.resolved) return;
     
-    console.log('continue');
     card.flipped = true;
     
     if ($scope.oneCardFlipped) {
       if (card.symbol === $scope.cardFlipped.symbol) {
         $scope.cardFlipped.resolved = true;
         card.resolved = true;
-        
-        $scope.checkGameFinished();
       } else {
         $scope.blockFlipping = true;
         $timeout(() => {
@@ -58,11 +57,11 @@ angular.module('myApp.board', ['ngRoute'])
           $scope.cardFlipped.flipped = false;
           $scope.cardFlipped = null;
           $scope.blockFlipping = false;
-          console.log('done');
         }, 2000);
       }
       $scope.oneCardFlipped = false;
       $scope.turns++;
+      $scope.checkGameFinished();
     } else {
       $scope.oneCardFlipped = true;
       $scope.cardFlipped = card;
@@ -72,6 +71,7 @@ angular.module('myApp.board', ['ngRoute'])
   $scope.checkGameFinished = () => {
     if ($scope.cards.every(card => card.resolved)) {
       console.log('game finished');
+      rankingService.save($scope.setSize, $scope.playerName, $scope.turns);
     } else {
       console.log('game not finished');
     }

@@ -8,7 +8,10 @@ angular.module('myApp', [
   'myApp.header',
   'myApp.board',
   'myApp.name',
-  'myApp.version'
+  'myApp.ranking',
+  'myApp.version',
+  'myApp.rankingService',
+  'ngDialog',
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

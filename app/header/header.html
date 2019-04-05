@@ -6,7 +6,7 @@
     {{ ctrl.params.player }}
   </div>
   <div class="ranking">
-    <button>Ranking</button>
+    <button ng-click="showRanking()">Ranking</button>
   </div>
   <div ng-if="ctrl.params.hasOwnProperty('turns')" class="turns">
     Turns: {{ ctrl.params.turns }}

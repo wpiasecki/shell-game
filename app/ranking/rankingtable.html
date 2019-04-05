@@ -1,0 +1,11 @@
+<b>{{ set.name }}:</b>
+<table class="ranking-table" border="1">
+  <tr>
+    <th>Player</th>
+    <th>Turns</th>
+  </tr>
+  <tr ng-repeat="(r, row) in set.list">
+    <td>{{ row.name }}</td>
+    <td>{{ row.turns }}</td>
+  <tr>
+</table>
