@@ -2,7 +2,6 @@
 
 function HeaderCtrl($scope, $element, $attrs, ngDialog) {
   var ctrl = this;
-  console.log('headerCtrl', ctrl, $scope, $element, $attrs, ngDialog);
   
   $scope.showRanking = () => 
     ngDialog.open({ 

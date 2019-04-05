@@ -2,7 +2,6 @@ angular.module('myApp.rankingService', [])
   .factory('rankingService', function() {
     return {
       save: (setSize, name, turns) => {
-        console.log('rankingservice save');
         const ranking = JSON.parse(localStorage.getItem('ranking')) || {};
         ranking[setSize] = ranking[setSize] || [];
         ranking[setSize].push({ name: name, turns: turns });

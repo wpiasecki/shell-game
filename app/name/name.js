@@ -13,14 +13,10 @@ angular.module('myApp.name', ['ngRoute'])
 .controller('NameCtrl', function($scope, $location) {
   var ctrl = this;
   
-  console.log('nameCtrl', this, $scope, $location);
-  
   $scope.playername;
   $scope.setSize = '10set';
   
   $scope.startGame = function() {
-    console.log('startGame', this);
-    //this.$router.navigate(['myApp.board']);
     $location.path('board/' + $scope.setSize + "/" + $scope.playername);
   }
 });

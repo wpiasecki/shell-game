@@ -11,7 +11,6 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService', 'ngDialog'])
 
 .controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', '$routeParams', 'ngDialog', 
     function($scope, $timeout, rankingService, $routeParams, ngDialog) {
-  console.log('boardCtrl', this);
   
   const shapes = Object.values({
     star      : ['\u2605', '#d6cf17'],
