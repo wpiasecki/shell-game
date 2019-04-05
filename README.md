@@ -1,8 +1,18 @@
 # shell-game
 
-Jogo da memória feito em AngularJS.
+Jogo da memória feito em AngularJS. Desenvolvido no Firefox (Ubuntu) e testado no Chromium.
 
 Possível escolher conjunto com 5 ou 10 pares de cartas.
+
+Para executar o projeto localmente: 
+
+```
+git clone https://github.com/wpiasecki/shell-game
+cd shell-game
+npm start
+```
+
+E acessar em http://localhost:8000 através do navegador.
 
 Projeto criado com [angular-seed](https://github.com/angular/angular-seed)
 
