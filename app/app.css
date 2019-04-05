@@ -23,3 +23,13 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+body {
+  background-color: #b3bbc9;
+}
+
+.header {
+  background-color: #d0d9e8;
+  height: 50px;
+  border-bottom: 3px solid #8a909b;
+}
