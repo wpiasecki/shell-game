@@ -71,10 +71,10 @@ div.board {
 }
 
 div.card {
-  height: 200px;
-  line-height: 200px;
+  height: 160px;
+  line-height: 160px;
   display: inline-block;
-  width: 130px;
+  width: 120px;
   margin: 15px;
   border: 7px solid #b0c4e8;
   border-radius: 10px;
@@ -124,5 +124,6 @@ div.player-name input[type=radio] {
 
 div.player-name-button {
   text-align: right;
+  cursor: pointer;
 }
 

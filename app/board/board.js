@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
+angular.module('myApp.board', ['ngRoute', 'myApp.rankingService', 'ngDialog'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/board/:setSize/:name', {
@@ -9,8 +9,9 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
   });
 }])
 
-.controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', '$routeParams', function($scope, $timeout, rankingService, $routeParams) {
-  console.log('boardCtrl', this, $routeParams);
+.controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', '$routeParams', 'ngDialog', 
+    function($scope, $timeout, rankingService, $routeParams, ngDialog) {
+  console.log('boardCtrl', this);
   
   const shapes = Object.values({
     star      : ['\u2605', '#d6cf17'],
@@ -68,12 +69,18 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
   };
   
   $scope.checkGameFinished = () => {
-    if ($scope.cards.every(card => card.resolved)) {
-      console.log('game finished');
-      rankingService.save($scope.setSize, $scope.playerName, $scope.turns);
-    } else {
-      console.log('game not finished');
-    }
+    //if ($scope.cards.every(card => card.resolved)) {
+      //rankingService.save($scope.setSize, $scope.playerName, $scope.turns);
+      ngDialog.open({ 
+        template: 'board/success.html', 
+        className: 'ngdialog-theme-default',
+        closeByDocument: false,
+        data : {
+          playerName: $scope.playerName,
+          rounds: $scope.turns,
+        }
+      });
+    //}
   };
   
   $scope.getBorderColor = card => card.flipped ? 'border-color: ' + card.color : '';

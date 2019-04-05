@@ -16,7 +16,7 @@ angular.module('myApp.name', ['ngRoute'])
   console.log('nameCtrl', this, $scope, $location);
   
   $scope.playername;
-  $scope.setSize = '5set';
+  $scope.setSize = '10set';
   
   $scope.startGame = function() {
     console.log('startGame', this);
