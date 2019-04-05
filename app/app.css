@@ -101,3 +101,28 @@ table.ranking-table td, table.ranking-table th {
   border: 1px solid lightgray;
 }
 
+div.player-name {
+  border: 7px solid #b0c4e8;
+  margin: 0 auto;
+  max-width: 400px;
+  margin-top: 3em;
+  background-color: #e3ebf9;
+  border-radius: 10px;
+  padding: 2em;
+}
+
+div.player-name input[type=text] {
+  border-color: #8a909b;
+  border-radius: 5px;
+  width: 98%;
+  padding: 7px;
+}
+
+div.player-name input[type=radio] {
+  margin: 10px 5px;
+}
+
+div.player-name-button {
+  text-align: right;
+}
+

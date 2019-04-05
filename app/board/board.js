@@ -3,16 +3,16 @@
 angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/board', {
+  $routeProvider.when('/board/:setSize/:name', {
     templateUrl: 'board/board.html',
     controller: 'BoardCtrl'
   });
 }])
 
-.controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', function($scope, $timeout, rankingService) {
-  console.log('boardCtrl', this);
+.controller('BoardCtrl', ['$scope', '$timeout', 'rankingService', '$routeParams', function($scope, $timeout, rankingService, $routeParams) {
+  console.log('boardCtrl', this, $routeParams);
   
-  const shapes = {
+  const shapes = Object.values({
     star      : ['\u2605', '#d6cf17'],
     hearts    : ['\u2665', '#c42700'],
     clubs     : ['\u2663', 'black'],
@@ -24,18 +24,17 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService'])
     phone     : ['\u260E', '#4c8901'],
     umbrella  : ['\u2602', '#00004c'],
     horse     : ['\u265E', '#633500'],
-  }
-  
-  const set = [shapes.star, shapes.hearts, shapes.clubs, shapes.diamond, shapes.spades];
-  //const set = Object.values(shapes);
+  });
   
   $scope.oneCardFlipped = false;
   $scope.cardFlipped;
   $scope.blockFlipping = false;
   
-  $scope.setSize = '5';
-  $scope.playerName = 'echo';
+  $scope.setSize = $routeParams.setSize;
+  $scope.playerName = $routeParams.name;
   $scope.turns = 0;
+
+  const set = $scope.setSize == '5set' ? shapes.slice(0, 5) : shapes;
   
   $scope.cards = randomize(duplicate(set)).map(symbol => (
     { symbol: symbol[0], color: symbol[1], flipped: false, resolved: false }
@@ -86,6 +85,22 @@ function duplicate(symbols) {
 }
 
 function randomize(symbols) {
-  return symbols.sort(() => Math.random() - 0.5);
+
+  /*
+   * Sorting solution without Math.random()
+   * https://osric.com/chris/accidental-developer/2012/07/javascript-array-sort-random-ordering/
+   */
+  var n = symbols.length;
+  var tempArr = [];
+  for ( var i = 0; i < n-1; i++ ) {
+    // The following line removes one random element from arr
+    // and pushes it onto tempArr
+    tempArr.push(symbols.splice(Math.floor(Math.random()*symbols.length),1)[0]);
+  }
+  // Push the remaining item onto tempArr
+  tempArr.push(symbols[0]);
+  symbols = tempArr;
+
+  return symbols;
 }
 
