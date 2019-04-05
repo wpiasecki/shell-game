@@ -7,7 +7,7 @@ angular.module('myApp.rankingService', [])
         ranking[setSize] = ranking[setSize] || [];
         ranking[setSize].push({ name: name, turns: turns });
         ranking[setSize].sort((rankA, rankB) => rankA.turns - rankB.turns);
-        ranking[setSize] = ranking[setSize].slice(0, 10);
+        ranking[setSize] = ranking[setSize].slice(0, 5);
         localStorage.setItem('ranking', JSON.stringify(ranking));
       },
       get: () =>  JSON.parse(localStorage.getItem('ranking')) || {},

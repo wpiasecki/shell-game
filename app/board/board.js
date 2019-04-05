@@ -69,8 +69,8 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService', 'ngDialog'])
   };
   
   $scope.checkGameFinished = () => {
-    //if ($scope.cards.every(card => card.resolved)) {
-      //rankingService.save($scope.setSize, $scope.playerName, $scope.turns);
+    if ($scope.cards.every(card => card.resolved)) {
+      rankingService.save($scope.setSize, $scope.playerName, $scope.turns);
       ngDialog.open({ 
         template: 'board/success.html', 
         className: 'ngdialog-theme-default',
@@ -80,7 +80,7 @@ angular.module('myApp.board', ['ngRoute', 'myApp.rankingService', 'ngDialog'])
           rounds: $scope.turns,
         }
       });
-    //}
+    }
   };
   
   $scope.getBorderColor = card => card.flipped ? 'border-color: ' + card.color : '';
