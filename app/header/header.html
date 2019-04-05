@@ -1,1 +1,14 @@
-<div class="header"></div>
+<div class="header">
+  <div class="title">
+    Shell Game
+  </div>
+  <div class="player">
+    {{ ctrl.params.player }}
+  </div>
+  <div class="ranking">
+    <button>Ranking</button>
+  </div>
+  <div ng-if="ctrl.params.hasOwnProperty('turns')" class="turns">
+    Turns: {{ ctrl.params.turns }}
+  </div>
+</div>

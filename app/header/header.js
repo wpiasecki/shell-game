@@ -10,7 +10,8 @@ angular.module('myApp.header', ['ngRoute']).component('header', {
   bindings: {
     params: '='
   },
-  controller: HeaderCtrl
+  controller: HeaderCtrl,
+  controllerAs: 'ctrl'
 });
 
 
