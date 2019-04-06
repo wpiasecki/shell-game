@@ -1,12 +1,16 @@
 <header params="{ turns: turns, playerName: playerName }"></header>
 
 <div class="board">
-  <div 
-    class="card"
-    ng-click="flip(card)"
-    style="{{ getBorderColor(card) }}"
-    ng-repeat="(key, card) in cards">
-      <span ng-if="card.flipped" style="color: {{ card.color }}">{{ card.symbol }}</span>
-      <span ng-if="!card.flipped" class="card-unknown">?</span>
+  <div class="card-container" 
+       ng-repeat="(key, card) in cards">
+    <div class="card" 
+         style="{{ getBorderColor(card) }}" 
+         ng-click="flip(card)"
+         ng-class="{ 'flipped' : card.flipped }">
+      <div class="back">?</div>
+      <div class="front">
+        <span style="color: {{ card.color }}">{{ card.symbol }}</span>
+      </div>
     </div>
+  </div>
 </div>

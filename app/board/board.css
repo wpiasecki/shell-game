@@ -4,21 +4,53 @@ div.board {
   margin: 0 auto;
 }
 
-div.card {
-  height: 160px;
-  line-height: 160px;
-  display: inline-block;
+div.card-container {
+  margin: 20px;
   width: 120px;
-  margin: 15px;
-  border: 7px solid #b0c4e8;
-  border-radius: 10px;
-  background-color: #e3ebf9;
+  height: 160px;
+  z-index: 1;
+  display: inline-block;
+  perspective: 1000;
+}
+
+div.card {
+  width: 100%;
+  height: 100%;
+  line-height: 160px;
+  position: relative;
   text-align: center;
   font-size: 6em;
   font-weight: bold;
   cursor: pointer;
+  border: 7px solid #b0c4e8;
+  border-radius: 10px;
+  background-color: #e3ebf9;
+  
+  transform-style: preserve-3d;
+  transition: all 0.5s linear;
 }
 
-div.card > span.card-unknown {
+div.card > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+div.card > .front {
+  transform: rotateY(180deg);
+}
+
+div.card > .back {
+  transform: rotateY(0deg);
+}
+
+div.card.flipped {
+  transform: rotateY(180deg);
+}
+
+div.card .back {
   color: #b0c4e8;
 }
+
+
