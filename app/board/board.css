@@ -41,6 +41,9 @@ div.card > .front {
   transform: rotateY(180deg);
 }
 
+/*
+ * Necessário para indicar para o browser a parte da frente da carta
+ */
 div.card > .back {
   transform: rotateY(0deg);
 }
@@ -49,7 +52,9 @@ div.card.flipped {
   transform: rotateY(180deg);
 }
 
-
+/*
+ * Animação de box-shadow ao acertar par de cartas
+ */
 @keyframes box-shadow-blink {
   0% { box-shadow: 0; }
   50% { box-shadow: 0px 0px 5px 4px rgba(230,250,100,1); }
