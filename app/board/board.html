@@ -6,7 +6,9 @@
     <div class="card" 
          style="{{ getBorderColor(card) }}" 
          ng-click="flip(card)"
-         ng-class="{ 'flipped' : card.flipped }">
+         ng-class="{ 
+          'flipped' : card.flipped, 
+          'wrong-pair' : blockFlipping && card.flipped && !card.resolved }">
       <div class="back">?</div>
       <div class="front">
         <span style="color: {{ card.color }}">{{ card.symbol }}</span>
