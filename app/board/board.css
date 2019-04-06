@@ -1,7 +1,7 @@
 div.board {
-  padding: 3em;
   max-width: 940px;
   margin: 0 auto;
+  text-align: center;
 }
 
 div.card-container {
@@ -37,6 +37,9 @@ div.card > div {
   backface-visibility: hidden;
 }
 
+/*
+ * A frente da carta está rotacionada; apresenta-se o verso
+ */
 div.card > .front {
   transform: rotateY(180deg);
 }
