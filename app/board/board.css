@@ -1,0 +1,24 @@
+div.board {
+  padding: 3em;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+div.card {
+  height: 160px;
+  line-height: 160px;
+  display: inline-block;
+  width: 120px;
+  margin: 15px;
+  border: 7px solid #b0c4e8;
+  border-radius: 10px;
+  background-color: #e3ebf9;
+  text-align: center;
+  font-size: 6em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+div.card > span.card-unknown {
+  color: #b0c4e8;
+}

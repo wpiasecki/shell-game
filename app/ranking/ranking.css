@@ -1,0 +1,13 @@
+table.ranking-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: none;
+  margin-bottom: 1em;
+}
+
+table.ranking-table td, table.ranking-table th {
+  padding: 5px;
+  border: 1px solid lightgray;
+}
+
+

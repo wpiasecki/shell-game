@@ -1,0 +1,31 @@
+div.header {
+  background-color: #d0d9e8;
+  height: 50px;
+  border-bottom: 3px solid #8a909b;
+  display: flex;
+}
+
+div.header > div {
+  padding: 13px;
+}
+
+div.header > div.title {
+  flex: 1;
+  font-weight: bold;
+}
+
+div.header > div.player, div.header > div.turns {
+  width: 150px;
+}
+
+div.header > div.ranking {
+  padding: 8px;
+}
+
+div.header > div.ranking > button {
+  cursor: pointer;
+}
+
+
+
+
